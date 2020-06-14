@@ -1,9 +1,24 @@
 import React from 'react'
 
-class VideoDetail extends React.Component{
-  render(){
-    return 'ei'
+const VideoDetail = ({selectedVideo}) => {
+  if(!selectedVideo){
+    return ''
   }
+
+  const videoSrc = `https://www.youtube.com/embed/${selectedVideo.id.videoId}`
+
+  return(
+    <div>
+      <div className="ui embed">
+        <iframe title="video player" src={videoSrc} />
+      </div>
+      <div className="ui segment">
+        <h4 className="ui header">{selectedVideo.snippet.title}</h4>
+        <p>{selectedVideo.snippet.description}</p>
+      </div>
+    </div>
+  )
+
 }
 
 export default VideoDetail
